@@ -71,7 +71,10 @@ li{
 /* CONTAINER */
 
 
-
+.container{
+    display: flex;
+    flex-direction: column;
+}
 
 
 
@@ -86,6 +89,7 @@ li{
 /* NAVBAR */
 
     nav{
+        position: initial;
         padding: 2rem 1.6rem;
     }
 
@@ -111,12 +115,58 @@ li{
     }
 
 
-
 /* CONTAINER */
 
+    .container{
+        margin-top: 1rem;
+    }
+
+    .shoe-img{
+        width: 100%;
+        height: 290px;
+    }
 
 
 
+
+    .product-txt-zone{
+        margin: 1rem 2rem;
+    }
+
+    .company-h{
+        font-size: 15px;
+        letter-spacing: 0.1rem;
+        color: var(--orange);
+        margin-bottom: 1rem;
+    }
+
+    .shoe-title{
+        margin-bottom: 1rem;
+    }
+
+    .shoe-description{
+        color: var(--dark-grayish-blue);
+        line-height: 1.4rem;
+    }
+
+    .shoe-prices{
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .price-set{
+        display: flex;
+    }
+
+    .price{
+        font-size: 20px;
+    }
+
+    .discount{
+        margin-left: 1rem;
+        background-color: orange;
+    }
 }
 
 
