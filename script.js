@@ -1,5 +1,6 @@
 const thumbBtns = document.querySelectorAll('.thumb-btn');
 const thumbImg = document.querySelectorAll('.thumb-img');
+const shoeImg = document.getElementsByClassName('shoe-img');
 const currentShoe = document.getElementById('current-shoe-img');
 const minusBtn = document.getElementById('minus-btn');
 const plusBtn = document.getElementById('more-btn');
@@ -12,35 +13,22 @@ const productPrice = document.getElementById('product-price');
 const delBtn = document.getElementById('delete-btn');
 
 const imagectonary= {1:'./images/image-product-1.jpg', 2:'./images/image-product-2.jpg', 3:'./images/image-product-3.jpg', 4:'./images/image-product-4.jpg'};
-let initialCounter = 0;
-let selectedThum = 0;
+
+
 
 thumbBtns.forEach(btn => {
+
     btn.addEventListener('click', (e) => {
         e.preventDefault();
-        const newImgId = e.target.id;
-        selectedThum = e.target;
-
+        const newImgId = e.target.id ;
+        let selectedThum = e.target;
         currentShoe.innerHTML =
         `
         <img src=${imagectonary[newImgId]} alt="" class="shoe-img" id="${newImgId}">
         `
-        let currentChild = currentShoe.childNodes[1].id
-        console.log(currentChild)
-        console.log(selectedThum.id)
-
-        if(currentChild == selectedThum.id){
-            selectedThum.classList.add('over');
-            selectedThum.classList.add('btn-borders');
-        } else {
-            selectedThum.classList.remove('over');
-            selectedThum.classList.remove('btn-borders');
-        }
-
-        const t = selectedThum.id.charAt(selectedThum.id.length-1)
+        checkImg(selectedThum)
     })   
 });
-
 
 minusBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -75,6 +63,16 @@ cartBtn.addEventListener('click', (e) => {
     }
 })
 
+
+currentShoe.addEventListener('click', (e) => {
+    openModal(e.target)
+})
+
+
+
+
+
+
 function addToCart (count) {
     if(initialCounter == 0) {
         alert('Please introduce more than 1!')
@@ -85,4 +83,22 @@ function addToCart (count) {
         $125.00 x ${count}
         `
     }
+}
+
+function checkImg(selectedThum) {
+    for(let i = 0; i < thumbImg.length; i++) {
+        const t = thumbImg[i].id.charAt(thumbImg[i].id.length-1)
+
+        if(t == shoeImg[0].id){
+            selectedThum.classList.add('over');
+            selectedThum.classList.add('btn-borders');
+        } else {
+            thumbImg[i].parentElement.classList.remove('over');
+            thumbImg[i].parentElement.classList.remove('btn-borders');
+        }
+    }
+}
+
+function openModal(currentShoeImg) {
+    console.log(currentShoeImg)
 }
